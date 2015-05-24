@@ -38,6 +38,7 @@ BuildRequires: pkgconfig(xxf86vm)
 BuildRequires: pkgconfig(xtst)
 BuildRequires: desktop-file-utils
 BuildRequires: pkgconfig(systemd)
+BuildRequires: pkgconfig(webkit2gtk-4.0)
 
 Requires: cinnamon-translations
 Requires: cinnamon-desktop
