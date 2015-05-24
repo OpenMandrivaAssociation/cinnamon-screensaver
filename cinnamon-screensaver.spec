@@ -8,8 +8,8 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 2.4.0
-Release: %mkrel 2
+Version: 2.4.2
+Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
 Group:   Graphical desktop/Cinnamon
@@ -80,83 +80,4 @@ desktop-file-install                                     \
 %{_libexecdir}/cinnamon-screensaver-dialog
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
 %doc %{_mandir}/man1/*.1.*
-
-
-
-%changelog
-* Wed Dec 03 2014 tmb <tmb> 2.4.0-2.mga5
-+ Revision: 800487
-- bump rel past testing
-
-* Sun Nov 23 2014 joequant <joequant> 2.4.0-1.mga5
-+ Revision: 798404
-- upgrade to 2.4
-
-* Wed Oct 15 2014 umeabot <umeabot> 2.2.4-4.mga5
-+ Revision: 747459
-- Second Mageia 5 Mass Rebuild
-
-* Tue Sep 16 2014 umeabot <umeabot> 2.2.4-3.mga5
-+ Revision: 678399
-- Mageia 5 Mass Rebuild
-
-* Thu Sep 04 2014 joequant <joequant> 2.2.4-2.mga5
-+ Revision: 671955
-- rebuild with new systemd
-
-* Sat Aug 30 2014 joequant <joequant> 2.2.4-1.mga5
-+ Revision: 669393
-- update to 2.2.4
-- upgrade to 2.2
-
-* Wed Jan 08 2014 joequant <joequant> 2.0.3-2.mga5
-+ Revision: 565561
-- push to core/release
-
-* Wed Jan 01 2014 joequant <joequant> 2.0.3-1.mga4
-+ Revision: 563805
-- upgrade to 2.0.3
-
-* Wed Oct 23 2013 joequant <joequant> 2.0.2-1.mga4
-+ Revision: 546392
-- upgrade to 2.0.2
-
-* Tue Oct 22 2013 umeabot <umeabot> 2.0.0-3.mga4
-+ Revision: 545126
-- Mageia 4 Mass Rebuild
-
-* Tue Oct 15 2013 joequant <joequant> 2.0.0-2.mga4
-+ Revision: 500822
-- don't start up when running gnome
-
-* Mon Oct 07 2013 joequant <joequant> 2.0.0-1.mga4
-+ Revision: 492508
-- remove upstream patch
-- upgrade to 2.0.0
-
-* Tue Oct 01 2013 joequant <joequant> 1.9.1-1.mga4
-+ Revision: 490091
-- change build requires to cinnamon-desktop
-- upgrade to 1.9.1
-
-* Mon Sep 02 2013 ennael <ennael> 1.8.0-5.mga4
-+ Revision: 474351
-- Rebuild against new gnome-desktop3
-
-* Sun Aug 25 2013 joequant <joequant> 1.8.0-4.mga4
-+ Revision: 471508
-- remove selinux/fedora from pam
-
-* Sun Aug 25 2013 joequant <joequant> 1.8.0-3.mga4
-+ Revision: 471447
-- remove xscreensaver conflict
-
-* Fri Aug 23 2013 joequant <joequant> 1.8.0-2.mga4
-+ Revision: 470131
-- fix build requires
-
-* Fri Aug 23 2013 joequant <joequant> 1.8.0-1.mga4
-+ Revision: 470048
-- add group information
-- imported package cinnamon-screensaver
 
