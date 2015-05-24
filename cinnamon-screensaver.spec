@@ -8,7 +8,7 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 2.4.2
+Version: 2.6.0
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
@@ -78,6 +78,7 @@ desktop-file-install                                     \
 %{_datadir}/applications/cinnamon-screensaver.desktop
 %{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
 %{_libexecdir}/cinnamon-screensaver-dialog
+%{_datadir}/%{name}
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
 %doc %{_mandir}/man1/*.1.*
 
