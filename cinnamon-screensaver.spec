@@ -8,7 +8,7 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 2.6.0
+Version: 3.0.1
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
