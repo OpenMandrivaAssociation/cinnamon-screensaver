@@ -6,9 +6,16 @@
 %global cinnamon_desktop_version 2.2.0
 %global libgnomekbd_version    2.91.1
 
+
+%define major   0
+%define girmajor   1.0
+%define libname %mklibname %{name} %{major}
+%define libdev  %mklibname %{name} -d
+%define girlib    %mklibname %{name}-gir %{girmajor}
+
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 3.0.1
+Version: 3.2.13
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
@@ -53,6 +60,43 @@ BuildRequires:  libxklavier-devel
 %description
 cinnamon-screensaver is a screen saver and locker.
 
+
+#--------------------------------------------------------------------
+
+%package -n %libname
+Summary:  Libraries for %name
+License:  LGPLv2+
+Group:    System/Libraries
+
+%description -n %libname
+Libraries for %name
+
+#--------------------------------------------------------------------
+
+%package -n %{girlib}
+Summary: GObject introspection interface library for %{name}
+Group: System/Libraries
+Requires: %{libname} = %{version}-%{release}
+
+%description -n %{girlib}
+GObject introspection interface library for %{name}.
+
+#--------------------------------------------------------------------
+
+%package -n %libdev
+Summary:  Libraries and headers for libcinnamon-screensaver
+License:  LGPLv2+
+Group:    Development/C
+Requires: %{libname} = %{version}-%{release}
+Requires: %{girlib} = %{version}-%{release}
+Requires: gtk3-devel >= %{gtk3_version}
+Requires: glib2-devel >= %{glib2_version}
+Requires: startup-notification-devel >= %{startup_notification_version}
+
+%description -n %libdev
+Libraries and header files for the CINNAMON-internal private library
+libcinnamondesktop.
+
 %prep
 %setup -q
 echo "ACLOCAL_AMFLAGS = -I m4" >> Makefile.am
@@ -78,8 +122,20 @@ desktop-file-install                                     \
 %{_bindir}/cinnamon-screensaver*
 %{_datadir}/applications/cinnamon-screensaver.desktop
 %{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
-%{_libexecdir}/cinnamon-screensaver-dialog
+%{_libexecdir}/cinnamon-screensaver-pam-helper
 %{_datadir}/%{name}
+%{_datadir}/icons/hicolor/scalable/*/*.svg
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
-%doc %{_mandir}/man1/*.1.*
+
+%files -n %libname
+%{_libdir}/libcscreensaver*.so.%{major}*
+
+%files -n %{girlib}
+%{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
+
+%files -n %libdev
+%{_libdir}/libcscreensaver.so
+%{_libdir}/pkgconfig/cscreensaver.pc
+%{_includedir}/cinnamon-screensaver/
+%{_datadir}/gir-1.0/C*-%{girmajor}.gir
 
