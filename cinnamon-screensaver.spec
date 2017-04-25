@@ -17,7 +17,7 @@
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
 Version: 3.2.13
-Release: 2
+Release: 3
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
 Group:   Graphical desktop/Cinnamon
@@ -56,6 +56,7 @@ Requires: cinnamon-desktop
 Requires: gnome-keyring
 Requires:	python-setproctitle
 Requires:	typelib(CScreensaver)
+Requires:	python-gi-cairo
 
 # I have no idea why this is required, but for now, just get things to build
 BuildRequires:  libxklavier-devel
