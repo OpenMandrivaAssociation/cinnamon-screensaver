@@ -1,5 +1,6 @@
 #global _internal_version 8de7ff0
-
+%global glib2_version 2.50.2
+%global startup_notification_version 0.12
 %global gtk3_version           2.99.3
 %global dbus_version           0.90
 %global dbus_glib_version      0.74
@@ -23,6 +24,7 @@ Group:   Graphical desktop/Cinnamon
 
 Source0: %{name}-%{version}.tar.gz
 #SourceGet0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}.tar.gz
+Source100:	%{name}.rpmlintrc
 
 BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
 BuildRequires: pkgconfig(dbus-1) >= %{dbus_version}
