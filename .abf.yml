@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   cinnamon-screensaver-3.2.13.tar.gz: ed2d08ae676615d8a641bbc724816d193e408179
+sources:
+  cinnamon-screensaver-4.0.3.tar.gz: 8cb1aad86a61a291065bcf362ed3f10326202181
