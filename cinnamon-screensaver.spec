@@ -57,7 +57,7 @@ Requires: gnome-keyring
 Requires:	python-setproctitle
 Requires:	typelib(CScreensaver)
 Requires:	python-gi-cairo
-
+Requires:	python3egg(python-xapp)
 # I have no idea why this is required, but for now, just get things to build
 BuildRequires:  libxklavier-devel
 
