@@ -95,8 +95,8 @@ License:  LGPLv2+
 Group:    Development/C
 Requires: %{libname} = %{version}-%{release}
 Requires: %{girlib} = %{version}-%{release}
-Requires: gtk3-devel >= %{gtk3_version}
-Requires: glib2-devel >= %{glib2_version}
+Requires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
+Requires: pkgconfig(glib-2.0) >= %{glib2_version}
 Requires: startup-notification-devel >= %{startup_notification_version}
 
 %description -n %libdev
