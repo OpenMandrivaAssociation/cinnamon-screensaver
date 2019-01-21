@@ -108,6 +108,9 @@ libcinnamondesktop.
 echo "ACLOCAL_AMFLAGS = -I m4" >> Makefile.am
 echo "AC_CONFIG_MACRO_DIR([m4])" >> configure.ac
 
+# fix pkgconfig
+sed -i 's/gtk-3.0/gtk+-3.0/' libcscreensaver/*.pc.in
+
 NOCONFIGURE=1 ./autogen.sh
 
 %build
