@@ -16,14 +16,14 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 4.0.3
+Version: 4.2.0
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
 Group:   Graphical desktop/Cinnamon
 
-Source0: %{name}-%{version}.tar.gz
-#SourceGet0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}.tar.gz
+Source0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{name}-%{version}.tar.gz
+
 Source100:	%{name}.rpmlintrc
 
 BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
@@ -115,10 +115,10 @@ NOCONFIGURE=1 ./autogen.sh
 
 %build
 %configure2_5x --with-mit-ext=no --without-console-kit
-%make V=1
+%make_build V=1
 
 %install
-%makeinstall_std
+%make_install
 
 desktop-file-install                                     \
   --delete-original                                      \
