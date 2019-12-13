@@ -16,7 +16,7 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 4.4.0
+Version: 4.4.1
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
@@ -61,11 +61,8 @@ Requires:	python3egg(python-xapp)
 # I have no idea why this is required, but for now, just get things to build
 BuildRequires:  libxklavier-devel
 
-
-
 %description
 cinnamon-screensaver is a screen saver and locker.
-
 
 #--------------------------------------------------------------------
 
@@ -147,4 +144,3 @@ desktop-file-install                                     \
 %{_libdir}/pkgconfig/cscreensaver.pc
 %{_includedir}/cinnamon-screensaver/
 %{_datadir}/gir-1.0/C*-%{girmajor}.gir
-
