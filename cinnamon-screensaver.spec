@@ -118,7 +118,7 @@ desktop-file-install                                     \
   $RPM_BUILD_ROOT%{_datadir}/applications/cinnamon-screensaver.desktop
 
 %files
-%doc AUTHORS NEWS README COPYING
+%doc AUTHORS NEWS COPYING
 %{_bindir}/cinnamon-screensaver*
 %{_datadir}/applications/cinnamon-screensaver.desktop
 %{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
