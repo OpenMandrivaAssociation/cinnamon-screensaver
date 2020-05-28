@@ -26,6 +26,7 @@ Source0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{
 
 Source100:	%{name}.rpmlintrc
 
+BuildRequires: meson
 BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
 BuildRequires: pkgconfig(dbus-1) >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
@@ -102,20 +103,13 @@ libcinnamondesktop.
 
 %prep
 %setup -q
-echo "ACLOCAL_AMFLAGS = -I m4" >> Makefile.am
-echo "AC_CONFIG_MACRO_DIR([m4])" >> configure.ac
-
-# fix pkgconfig
-sed -i 's/gtk-3.0/gtk+-3.0/' libcscreensaver/*.pc.in
-
-NOCONFIGURE=1 ./autogen.sh
 
 %build
-%configure --with-mit-ext=no --without-console-kit
-%make_build V=1
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 desktop-file-install                                     \
   --delete-original                                      \
