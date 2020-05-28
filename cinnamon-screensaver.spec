@@ -16,8 +16,8 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 4.4.1
-Release: 2
+Version: 4.6.0
+Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
 Group:   Graphical desktop/Cinnamon
@@ -111,7 +111,7 @@ sed -i 's/gtk-3.0/gtk+-3.0/' libcscreensaver/*.pc.in
 NOCONFIGURE=1 ./autogen.sh
 
 %build
-%configure2_5x --with-mit-ext=no --without-console-kit
+%configure --with-mit-ext=no --without-console-kit
 %make_build V=1
 
 %install
