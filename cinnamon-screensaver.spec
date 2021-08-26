@@ -111,18 +111,20 @@ libcinnamondesktop.
 %install
 %meson_install
 
-#desktop-file-install                                     \
-#  --delete-original                                      \
-#  --remove-only-show-in=Xfce                             \
-#  --dir $RPM_BUILD_ROOT%{_datadir}/applications          \
-#  $RPM_BUILD_ROOT%{_datadir}/applications/cinnamon-screensaver.desktop
+desktop-file-install                                     \
+  --delete-original                                      \
+  --remove-only-show-in=Xfce                             \
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications          \
+  $RPM_BUILD_ROOT%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
 
 %files
 %doc AUTHORS NEWS COPYING
+%{_bindir}/cinnamon-unlock-desktop
 %{_bindir}/cinnamon-screensaver*
-#{_datadir}/applications/cinnamon-screensaver.desktop
+%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
 %{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
 %{_libexecdir}/cinnamon-screensaver-pam-helper
+%{_libexecdir}/cs-backup-locker
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/scalable/*/*.svg
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
