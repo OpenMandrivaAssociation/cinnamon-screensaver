@@ -27,6 +27,7 @@ Source0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{
 Source100:	%{name}.rpmlintrc
 
 BuildRequires: meson
+BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
 BuildRequires: pkgconfig(dbus-1) >= %{dbus_version}
 BuildRequires: dbus-glib-devel >= %{dbus_glib_version}
@@ -50,11 +51,13 @@ BuildRequires: desktop-file-utils
 BuildRequires: pkgconfig(systemd)
 BuildRequires: pkgconfig(webkit2gtk-4.0)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(pam)
 
 Requires: cinnamon-translations
 Requires: cinnamon-desktop
 # since we use it, and pam spams the log if a module is missing
 Requires: gnome-keyring
+Requires: libgnomekbd-common
 Requires:	python-setproctitle
 Requires:	typelib(CScreensaver)
 Requires:	python-gi-cairo
