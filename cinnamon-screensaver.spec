@@ -52,6 +52,7 @@ BuildRequires: pkgconfig(systemd)
 BuildRequires: pkgconfig(webkit2gtk-4.0)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(pam)
+BuildRequires: pkgconfig(libxdo)
 
 Requires: cinnamon-translations
 Requires: cinnamon-desktop
