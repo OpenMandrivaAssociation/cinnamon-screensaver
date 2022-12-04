@@ -17,7 +17,7 @@
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
 Version: 5.6.2
-Release: 1
+Release: 2
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
 Group:   Graphical desktop/Cinnamon
@@ -62,7 +62,7 @@ Requires: libgnomekbd-common
 Requires:	python-setproctitle
 Requires:	typelib(CScreensaver)
 Requires:	python-gi-cairo
-Requires:	python3dist(python-xapp)
+Requires:	python-xapp
 # I have no idea why this is required, but for now, just get things to build
 BuildRequires:  libxklavier-devel
 
