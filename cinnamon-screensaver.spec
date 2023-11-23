@@ -4,7 +4,7 @@
 %global gtk3_version           2.99.3
 %global dbus_version           0.90
 %global dbus_glib_version      0.74
-%global cinnamon_desktop_version 2.2.0
+%global cinnamon_desktop_version 6.0.0
 %global libgnomekbd_version    2.91.1
 
 
@@ -16,7 +16,7 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 5.8.1
+Version: 6.0.0
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
