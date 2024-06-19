@@ -16,7 +16,7 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 6.0.3
+Version: 6.2.0
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     http://cinnamon.linuxmint.com
@@ -49,7 +49,7 @@ BuildRequires: pkgconfig(xxf86vm)
 BuildRequires: pkgconfig(xtst)
 BuildRequires: desktop-file-utils
 BuildRequires: pkgconfig(systemd)
-BuildRequires: pkgconfig(webkit2gtk-4.0)
+BuildRequires: pkgconfig(webkit2gtk-4.1)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(pam)
 BuildRequires: pkgconfig(libxdo)
