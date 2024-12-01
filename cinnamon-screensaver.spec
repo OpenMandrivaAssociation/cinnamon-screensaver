@@ -135,7 +135,7 @@ desktop-file-install                                     \
 #{_libdir}/libcscreensaver*.so.%{major}*
 
 %files -n %{girlib}
-%{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
+#{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
 
 %files -n %libdev
 %{_libdir}/libcscreensaver.so
