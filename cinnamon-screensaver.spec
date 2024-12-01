@@ -132,7 +132,7 @@ desktop-file-install                                     \
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
 
 %files -n %libname
-%{_libdir}/libcscreensaver*.so.%{major}*
+#{_libdir}/libcscreensaver*.so.%{major}*
 
 %files -n %{girlib}
 %{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
