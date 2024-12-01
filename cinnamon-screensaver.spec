@@ -127,8 +127,6 @@ desktop-file-install                                     \
 %{_bindir}/cinnamon-screensaver*
 %{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
 %{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
-%{_libexecdir}/cinnamon-screensaver-pam-helper
-%{_libexecdir}/cs-backup-locker
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/scalable/*/*.svg
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
