@@ -130,6 +130,7 @@ desktop-file-install                                     \
 %{_datadir}/%{name}
 %{_datadir}/icons/hicolor/scalable/*/*.svg
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
+%{_libexedir}/cinnamon-screensaver/
 
 %files -n %libname
 #{_libdir}/libcscreensaver*.so.%{major}*
