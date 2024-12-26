@@ -138,7 +138,7 @@ desktop-file-install                                     \
 #{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
 
 %files -n %libdev
-%{_libdir}/libcscreensaver.so
-%{_libdir}/pkgconfig/cscreensaver.pc
+#{_libdir}/libcscreensaver.so
+#{_libdir}/pkgconfig/cscreensaver.pc
 #{_includedir}/cinnamon-screensaver/
 %{_datadir}/gir-1.0/C*-%{girmajor}.gir
