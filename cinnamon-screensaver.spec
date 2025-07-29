@@ -27,6 +27,7 @@ Source0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{
 Source100:	%{name}.rpmlintrc
 
 BuildRequires: meson
+BuildRequires: mold
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
 BuildRequires: pkgconfig(dbus-1) >= %{dbus_version}
@@ -106,9 +107,12 @@ Libraries and header files for the CINNAMON-internal private library
 libcinnamondesktop.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%global optflags %{optflags} -fuse-ld=mold
+export CC=gcc
+export CXX=g++
 %meson
 %meson_build
 
