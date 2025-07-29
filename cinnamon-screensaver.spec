@@ -54,6 +54,7 @@ BuildRequires: pkgconfig(webkit2gtk-4.1)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(pam)
 BuildRequires: pkgconfig(libxdo)
+BuildRequires: pkgconfig(harfbuzz-gobject)
 
 Requires: cinnamon-translations
 Requires: cinnamon-desktop
