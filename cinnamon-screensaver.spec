@@ -62,7 +62,7 @@ Requires: cinnamon-desktop
 Requires: gnome-keyring
 Requires: libgnomekbd-common
 Requires:	python-setproctitle
-Requires:	typelib(CScreensaver)
+#Requires:	typelib(CScreensaver)
 Requires:	python-gi-cairo
 Requires:	python-xapp
 # I have no idea why this is required, but for now, just get things to build
@@ -73,23 +73,23 @@ cinnamon-screensaver is a screen saver and locker.
 
 #--------------------------------------------------------------------
 
-%package -n %libname
-Summary:  Libraries for %name
-License:  LGPLv2+
-Group:    System/Libraries
+#package -n %libname
+#Summary:  Libraries for %name
+#License:  LGPLv2+
+#Group:    System/Libraries
 
-%description -n %libname
-Libraries for %name
+#description -n %libname
+#Libraries for %name
 
 #--------------------------------------------------------------------
 
-%package -n %{girlib}
-Summary: GObject introspection interface library for %{name}
-Group: System/Libraries
-Requires: %{libname} = %{version}-%{release}
+#package -n %{girlib}
+#Summary: GObject introspection interface library for %{name}
+#Group: System/Libraries
+#Requires: %{libname} = %{version}-%{release}
 
-%description -n %{girlib}
-GObject introspection interface library for %{name}.
+#description -n %{girlib}
+#GObject introspection interface library for %{name}.
 
 #--------------------------------------------------------------------
 
@@ -97,8 +97,9 @@ GObject introspection interface library for %{name}.
 Summary:  Libraries and headers for libcinnamon-screensaver
 License:  LGPLv2+
 Group:    Development/C
-Requires: %{libname} = %{version}-%{release}
-Requires: %{girlib} = %{version}-%{release}
+Requires: %{name} = %{version}-%{release}
+#Requires: %{libname} = %{version}-%{release}
+#Requires: %{girlib} = %{version}-%{release}
 Requires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
 Requires: pkgconfig(glib-2.0) >= %{glib2_version}
 Requires: startup-notification-devel >= %{startup_notification_version}
@@ -137,10 +138,10 @@ desktop-file-install                                     \
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
 %{_libexecdir}/cinnamon-screensaver/
 
-%files -n %libname
+#files -n %libname
 #{_libdir}/libcscreensaver*.so.%{major}*
 
-%files -n %{girlib}
+#files -n %{girlib}
 #{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
 
 %files -n %libdev
