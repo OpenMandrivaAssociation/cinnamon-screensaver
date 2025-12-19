@@ -1,0 +1,51 @@
+From bfa379219b777d21a7492c7be7309d8fd401a6a0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Tue, 16 Dec 2025 15:46:51 +0100
+Subject: [PATCH] Make Caribou dependency optional
+
+When Caribou is missing from the system, just disable the on-screen
+keyboard instead of failing.
+---
+ src/stage.py | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/src/stage.py b/src/stage.py
+index 05b5028f..0608f1e0 100644
+--- a/src/stage.py
++++ b/src/stage.py
+@@ -16,11 +16,16 @@
+ from albumArt import AlbumArt
+ from audioPanel import AudioPanel
+ from infoPanel import InfoPanel
+-from osk import OnScreenKeyboard
+ from util import utils, trackers, settings
+ from util.eventHandler import EventHandler
+ from util.utils import DEBUG
+ 
++try:
++    from osk import OnScreenKeyboard
++except Exception as e:
++    print("Failed to import on-screen keyboard: %s" % str(e))
++    OnScreenKeyboard = None
++
+ FLOATER_POSITIONING_TIMEOUT = 30
+ 
+ class Stage(Gtk.Window):
+@@ -275,10 +280,13 @@ def setup_children(self):
+                 print("Problem setting up clock widget: %s" % str(e))
+                 self.clock_widget = None
+ 
+-            try:
+-                self.setup_osk()
+-            except Exception as e:
+-                print("Problem setting up on-screen keyboard: %s" % str(e))
++            if OnScreenKeyboard:
++                try:
++                    self.setup_osk()
++                except Exception as e:
++                    print("Problem setting up on-screen keyboard: %s" % str(e))
++                    self.osk = None
++            else:
+                 self.osk = None
+ 
+             trackers.timer_tracker_get().start("setup-delayed-components",

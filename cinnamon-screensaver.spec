@@ -16,7 +16,7 @@
 
 Summary: Cinnamon Screensaver
 Name:    cinnamon-screensaver
-Version: 6.4.1
+Version: 6.6.1
 Release: 1
 License: GPLv2+ and LGPLv2+
 URL:     https://cinnamon.linuxmint.com
@@ -26,7 +26,13 @@ Source0: https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{
 
 Source100:	%{name}.rpmlintrc
 
-BuildRequires: meson
+BuildSystem:   meson
+BuildOption:   -Dsetres=false
+BuildOption:   -Dxinerama=true
+BuildOption:   -Duse-debian-pam=false
+BuildOption:   -Dlocking=true
+BuildOption:   -Ddeprecated-warnings=true
+
 BuildRequires: mold
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
@@ -73,23 +79,23 @@ cinnamon-screensaver is a screen saver and locker.
 
 #--------------------------------------------------------------------
 
-#package -n %libname
-#Summary:  Libraries for %name
-#License:  LGPLv2+
-#Group:    System/Libraries
+# %package -n %libname
+# Summary:  Libraries for %name
+# License:  LGPLv2+
+# Group:    System/Libraries
 
-#description -n %libname
-#Libraries for %name
+# %description -n %libname
+# Libraries for %name
 
 #--------------------------------------------------------------------
 
-#package -n %{girlib}
-#Summary: GObject introspection interface library for %{name}
-#Group: System/Libraries
-#Requires: %{libname} = %{version}-%{release}
+%package -n %{girlib}
+Summary: GObject introspection interface library for %{name}
+Group: System/Libraries
+Requires: %{name} = %{version}-%{release}
 
-#description -n %{girlib}
-#GObject introspection interface library for %{name}.
+%description -n %{girlib}
+GObject introspection interface library for %{name}.
 
 #--------------------------------------------------------------------
 
@@ -98,8 +104,8 @@ Summary:  Libraries and headers for libcinnamon-screensaver
 License:  LGPLv2+
 Group:    Development/C
 Requires: %{name} = %{version}-%{release}
-#Requires: %{libname} = %{version}-%{release}
-#Requires: %{girlib} = %{version}-%{release}
+# Requires: %{libname} = %{version}-%{release}
+Requires: %{girlib} = %{version}-%{release}
 Requires: pkgconfig(gtk+-3.0) >= %{gtk3_version}
 Requires: pkgconfig(glib-2.0) >= %{glib2_version}
 Requires: startup-notification-devel >= %{startup_notification_version}
@@ -108,44 +114,39 @@ Requires: startup-notification-devel >= %{startup_notification_version}
 Libraries and header files for the CINNAMON-internal private library
 libcinnamondesktop.
 
-%prep
-%autosetup -p1
 
-%build
+%conf -p
 %global optflags %{optflags} -fuse-ld=mold
 export CC=gcc
 export CXX=g++
-%meson
-%meson_build
 
-%install
-%meson_install
+
+%install -a
+mkdir -p %{buildroot}%{_libdir}/girepository-1.0
+mv %{buildroot}%{_libexecdir}/%{name}/girepository-1.0/CScreensaver-1.0.typelib \
+   %{buildroot}%{_libdir}/girepository-1.0/
+rm -rf %{buildroot}%{_libexecdir}/%{name}/girepository-1.0
 
 desktop-file-install                                     \
   --delete-original                                      \
   --remove-only-show-in=Xfce                             \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications          \
-  $RPM_BUILD_ROOT%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
+  --dir %{buildroot}/%{_datadir}/applications          \
+  %{buildroot}/%{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
 
 %files
-%doc AUTHORS NEWS COPYING
-%{_bindir}/cinnamon-unlock-desktop
-%{_bindir}/cinnamon-screensaver*
+%doc AUTHORS README.md HACKING
+%license COPYING COPYING.LIB
+%dir %{_libexecdir}/%{name}
+%{_bindir}/{%{name}{,-command},cinnamon-unlock-desktop}
 %{_datadir}/applications/org.cinnamon.ScreenSaver.desktop
-%{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
+%{_libexecdir}/%{name}/{%{name}-pam-helper,cs-backup-locker,libcscreensaver.so}
 %{_datadir}/%{name}
-%{_datadir}/icons/hicolor/scalable/*/*.svg
-%config %{_sysconfdir}/pam.d/cinnamon-screensaver
-%{_libexecdir}/cinnamon-screensaver/
+%{_datadir}/dbus-1/services/org.cinnamon.ScreenSaver.service
+%{_datadir}/icons/hicolor/scalable/{actions,apps,status}/*.svg
+%config %{_sysconfdir}/pam.d/%{name}
 
-#files -n %libname
-#{_libdir}/libcscreensaver*.so.%{major}*
-
-#files -n %{girlib}
-#{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
+%files -n %{girlib}
+%{_libdir}/girepository-1.0/C*-%{girmajor}.typelib
 
 %files -n %libdev
-#{_libdir}/libcscreensaver.so
-#{_libdir}/pkgconfig/cscreensaver.pc
-#{_includedir}/cinnamon-screensaver/
 %{_datadir}/gir-1.0/C*-%{girmajor}.gir
